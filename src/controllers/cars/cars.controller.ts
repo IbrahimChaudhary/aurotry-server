@@ -1,37 +1,45 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { SupabaseService } from 'src/supabase/supabase.service';
+// src/controllers/cars/cars.controller.ts
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Body,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
+import { CarsService } from 'src/services/cars/cars.service';
 
 @Controller('cars')
-export class CarController {
-  constructor(private readonly supabaseService: SupabaseService) {}
+export class CarsController {
+  constructor(private readonly carsService: CarsService) {}
+
+  @Get()
+  findAll() {
+    return this.carsService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.carsService.findOne(id);
+  }
+
   @Post()
-  async createUser(@Body() carData: { name: string }) {
-    const { data, error } = await this.supabaseService
-      .getClient()
-      .from('cars')
-      .insert([carData]);
-
-    if (error) {
-      return { error: error.message };
-    }
-
-    return data;
+  create(@Body() carData: { name: string }) {
+    return this.carsService.create(carData);
   }
-  @Get()
-  async getUsers() {
-    const { data, error } = await this.supabaseService
-      .getClient()
-      .from('cars')
-      .select('*');
 
-    if (error) {
-      return { error: error.message };
-    }
-
-    return data;
+  @Put(':id')
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() carData: { name: string }
+  ) {
+    return this.carsService.update(id, carData);
   }
-  @Get()
-  getHello(): string {
-    return 'Hello World!';
+
+  @Delete(':id')
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.carsService.remove(id);
   }
 }

@@ -1,37 +1,35 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { SupabaseService } from 'src/supabase/supabase.service';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
+import { UserService } from 'src/services/users/users.service';
 
 @Controller('users')
 export class UserController {
-  constructor(private readonly supabaseService: SupabaseService) {}
+  constructor(private readonly userService: UserService) {}
+
+  @Get()
+  findAll() {
+    return this.userService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.findOne(id);
+  }
+
   @Post()
-  async createUser(@Body() userData: { name: string }) {
-    const { data, error } = await this.supabaseService
-      .getClient()
-      .from('users')
-      .insert([userData]);
-
-    if (error) {
-      return { error: error.message };
-    }
-
-    return data;
+  create(@Body() userData: { name: string; email: string }) {
+    return this.userService.create(userData);
   }
-  @Get()
-  async getUsers() {
-    const { data, error } = await this.supabaseService
-      .getClient()
-      .from('users')
-      .select('*');
 
-    if (error) {
-      return { error: error.message };
-    }
-
-    return data;
+  @Put(':id')
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() userData: Partial<{ name: string; email: string }>
+  ) {
+    return this.userService.update(id, userData);
   }
-  @Get()
-  getHello(): string {
-    return 'Hello World!';
+
+  @Delete(':id')
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.remove(id);
   }
 }
