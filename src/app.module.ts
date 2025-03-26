@@ -1,5 +1,4 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { UserController } from './controllers/users/user.controller';
 import { SupabaseModule } from './supabase/supabase.module';
 import { DbModule } from './db/db.module';
 import { UsersModule } from './modules/users/users.module';
