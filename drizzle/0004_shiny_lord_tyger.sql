@@ -1,0 +1,1 @@
+ALTER TABLE "links" DROP COLUMN "ar_link_exp_date";
