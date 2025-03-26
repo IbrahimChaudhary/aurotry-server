@@ -15,6 +15,20 @@
       "when": 1742077102548,
       "tag": "0001_nervous_redwing",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1742135890267,
+      "tag": "0002_loving_dark_phoenix",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1743008216519,
+      "tag": "0003_flawless_guardsmen",
+      "breakpoints": true
     }
   ]
 }
