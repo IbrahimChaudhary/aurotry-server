@@ -13,9 +13,9 @@ export const users = pgTable('users', {
 export const links = pgTable('links', {
   id: serial('id').primaryKey(),
   userId: text('user_id').notNull(), 
-  arLink: text('ar_link').notNull(),
-  arLinkName: text('ar_link_name'),
-  arLinkSku: text('ar_link_sku'),
+  arLink: text('ar_link').notNull().unique(),
+  arLinkName: text('ar_link_name').unique(),
+  arLinkSku: text('ar_link_sku').unique(),
   arLinkStatus: text('ar_link_status'),
   arLinkGenDate: timestamp('ar_link_gen_date'),
   arLinkFile: text('ar_link_file'),
