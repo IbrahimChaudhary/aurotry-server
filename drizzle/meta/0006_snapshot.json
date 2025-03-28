@@ -1,0 +1,193 @@
+{
+  "id": "46bad79e-0d0d-404f-948c-1e2c484d8668",
+  "prevId": "ea49b2e9-4b34-46f1-868a-06b6bc4310fa",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.links": {
+      "name": "links",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ar_link": {
+          "name": "ar_link",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ar_link_name": {
+          "name": "ar_link_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ar_link_sku": {
+          "name": "ar_link_sku",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ar_link_status": {
+          "name": "ar_link_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ar_link_gen_date": {
+          "name": "ar_link_gen_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ar_link_file": {
+          "name": "ar_link_file",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ar_link_file_size": {
+          "name": "ar_link_file_size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ar_link_count": {
+          "name": "ar_link_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "links_ar_link_unique": {
+          "name": "links_ar_link_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "ar_link"
+          ]
+        },
+        "links_ar_link_name_unique": {
+          "name": "links_ar_link_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "ar_link_name"
+          ]
+        },
+        "links_ar_link_sku_unique": {
+          "name": "links_ar_link_sku_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "ar_link_sku"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plan_id": {
+          "name": "plan_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_email_unique": {
+          "name": "users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
