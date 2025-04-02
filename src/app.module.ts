@@ -21,8 +21,6 @@ export class AppModule implements NestModule {
         'auth/signin',
         'auth/signup',
         'auth/login',
-        'links',
-        'links/(.*)',
       )
       .forRoutes('*');
   }

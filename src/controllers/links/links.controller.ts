@@ -3,7 +3,7 @@ import { LinkService } from 'src/services/links/links.service';
 import { AuthGuard } from 'src/guards/auth.guard.';
 
 @Controller('links')
-// @UseGuards(AuthGuard) 
+@UseGuards(AuthGuard) 
 export class LinkController {
   constructor(private readonly linkService: LinkService) {}
 
